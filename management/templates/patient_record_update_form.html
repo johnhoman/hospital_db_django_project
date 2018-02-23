@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap3 %}
+<h1>{{ title }}</h1>
+<p>{{patient.first_name}} {{patient.last_name}}</p>
+<form method="POST" action="" class="form-horizontal">
+    {% csrf_token %}
+    {% bootstrap_form form error_types='all' %}
+    <a href="/management/patient/{{pk}}">
+        <input type="button" value="Update" class="btn btn-primary"/>
+    </a>
+</form>
+{% endblock %}

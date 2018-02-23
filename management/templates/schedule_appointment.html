@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap3 %}
+<h1> {{ title }}</h1>
+<form method="POST" action="" class="form-horizontal">
+    {% csrf_token %}
+    {% bootstrap_form department_form %}
+    {% buttons %}
+        <button type="submit" class="btn btn-primary">
+            Submit
+        </button>
+    {% endbuttons %}
+</form>
+<form method="POST" action="" class="form-horizontal">
+    {% csrf_token %}
+    {% bootstrap_form doctor_form %}
+    {% buttons %}
+        <button type="submit" class="btn btn-primary">
+            Submit
+        </button>
+    {% endbuttons %}
+</form>
+
+
+
+{% endblock %}
+

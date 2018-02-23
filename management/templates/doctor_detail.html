@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap3 %}
+{% load render_table from django_tables2 %}
+<h1>{{ title }}</h1>
+<p>Dr. {{doctor.first_name}} {{doctor.last_name}}</p>
+<p><b>Specialization:</b> {{doctor.specialization}}</p>
+<h2>Schedule<span class="pull-right"><a href="{% url 'appointment_create' %}" class="btn btn-primary">New Appointment</a></span></h2>
+<div>
+    <form method="GET">
+        {% csrf_token %}
+        {% bootstrap_form filter.form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">Filter</button>
+        {% endbuttons %}
+    </form>
+</div>
+{% render_table appointment_table %}
+<p>Number of Appointments: {{num_appointments}}</p>
+{% endblock %}

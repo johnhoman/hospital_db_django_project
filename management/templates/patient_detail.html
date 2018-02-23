@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap3 %}
+{% load render_table from django_tables2 %}
+<h1>{{ title }}</h1>
+<p>{{patient.last_name}}, {{patient.first_name}}</p>
+<p>ssn: xxx-xx-{{patient.last_four}}</p>
+<p>dob: {{patient.date_of_birth}}</p>
+<p>address: {{patient.street_address}}, {{patient.city}}, {{patient.state}}</p>
+<p>sex: {{patient.sex}}</p>
+<p>age: {{patient.age}}</p>
+<p>phone number: {{patient.phone_number}}</p>
+<h2>Illness Records
+    <span class="pull-right">
+        <a href="{% url 'patient_illness_create' %}" class="btn btn-primary">
+            New Patient Report
+        </a>
+    </span>
+</h2>
+{% render_table table %}
+<h3>Scheduled Appointments</h3>
+{% render_table appointment_table %}
+<p>Appointments: {{num_appointments}}</p>
+<h4>Schedule Room
+    <span class="pull-right">
+        <a href="{% url 'schedule_room' %}" class="btn btn-primary">
+            Schedule Room
+        </a>
+    </span>
+</h4>
+
+{% endblock %}
